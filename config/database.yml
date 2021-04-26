@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres6
+  password: 1234
+  host: localhost
+  port: 5432
+
+
+development:
+  <<: *default
+  database: property_finder_development
+
+test:
+  <<: *default
+  database: property_finder_test
+
+production:
+  <<: *default
+  database: property_finder_production
+  username: property_finder
+  password: <%= ENV['PROPERTY_FINDER_DATABASE_PASSWORD'] %>
